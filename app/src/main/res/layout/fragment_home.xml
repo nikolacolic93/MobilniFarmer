@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:tag="home_fragment"
+    android:id="@+id/home_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <android.support.constraint.ConstraintLayout
+            android:id="@+id/topBanner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorSecondary"
+            app:layout_constraintTop_toTopOf="@id/home_fragment"
+            app:layout_constraintLeft_toLeftOf="@id/home_fragment"
+            app:layout_constraintRight_toRightOf="@id/home_fragment"
+            >
+
+            <ImageButton
+                android:id="@+id/imgBtnCulture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/main_cultures"
+                android:paddingLeft="20sp"
+                android:paddingTop="20sp"
+                android:paddingRight="15sp"
+                android:paddingBottom="17sp"
+                app:layout_constraintBottom_toBottomOf="@+id/topBanner"
+                app:layout_constraintRight_toRightOf="@+id/topBanner"
+                app:layout_constraintTop_toTopOf="@+id/topBanner"
+                app:srcCompat="@drawable/ic_academic" />
+
+            <TextView
+                android:id="@+id/temperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:width="100dp"
+                android:gravity="center_vertical"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                app:fontFamily="sans-serif-condensed-medium"
+                app:layout_constraintBottom_toBottomOf="@+id/topBanner"
+                app:layout_constraintLeft_toLeftOf="@+id/topBanner"
+                app:layout_constraintTop_toTopOf="@+id/topBanner" />
+
+            <ImageButton
+                android:id="@+id/imgBtnWeather"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/main_weather"
+                android:padding="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/imgBtnCulture"
+                app:layout_constraintStart_toStartOf="@+id/temperature"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_sun" />
+        </android.support.constraint.ConstraintLayout>
+
+
+    <HorizontalScrollView
+            android:id="@+id/secondLineScrollView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorSecondary"
+            android:layout_marginTop="2sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/topBanner">
+
+            <LinearLayout
+                android:id="@+id/cultureScrollView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingLeft="20sp"
+                android:paddingTop="10sp"
+                android:paddingRight="20sp"
+                android:paddingBottom="10sp">
+
+                <RelativeLayout
+                    android:id="@+id/wheatLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageButton
+                        android:id="@+id/imgBtnWheat"
+                        android:tag="ic_wheat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10sp"
+                        android:layout_marginRight="10sp"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="@string/culture_wheat"
+                        android:paddingLeft="10sp"
+                        android:paddingRight="10sp"
+                        app:srcCompat="@drawable/ic_wheat" />
+
+                    <TextView
+                        android:id="@+id/txtWheat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/imgBtnWheat"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="0dp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/barleyLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageButton
+                        android:id="@+id/imgBtnBarley"
+                        android:tag="ic_barley"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10sp"
+                        android:layout_marginRight="10sp"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="@string/culture_barley"
+                        android:paddingLeft="10sp"
+                        android:paddingRight="10sp"
+                        app:srcCompat="@drawable/ic_barley" />
+
+                    <TextView
+                        android:id="@+id/txtBarley"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/imgBtnBarley"
+                        android:layout_centerInParent="true" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/cornLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageButton
+                        android:id="@+id/imgBtnCorn"
+                        android:tag="ic_corn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10sp"
+                        android:layout_marginRight="10sp"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="@string/culture_corn"
+                        android:paddingLeft="10sp"
+                        android:paddingRight="10sp"
+                        app:srcCompat="@drawable/ic_corn" />
+
+                    <TextView
+                        android:id="@+id/txtCorn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/imgBtnCorn"
+                        android:layout_centerInParent="true" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/soyLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageButton
+                        android:id="@+id/imgBtnSoy"
+                        android:tag="ic_soy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10sp"
+                        android:layout_marginRight="10sp"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="@string/culture_soy"
+                        android:paddingLeft="10sp"
+                        android:paddingRight="10sp"
+                        app:srcCompat="@drawable/ic_soy" />
+
+                    <TextView
+                        android:id="@+id/txtSoy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/imgBtnSoy"
+                        android:layout_centerInParent="true" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/sunflowerLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageButton
+                        android:id="@+id/imgBtnSunflower"
+                        android:tag="ic_sunflower"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10sp"
+                        android:layout_marginRight="10sp"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="@string/culture_sunflower"
+                        android:paddingLeft="10sp"
+                        android:paddingRight="10sp"
+                        app:srcCompat="@drawable/ic_sunflower" />
+
+                    <TextView
+                        android:id="@+id/txtSunflower"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/imgBtnSunflower"
+                        android:layout_centerInParent="true" />
+                </RelativeLayout>
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+
+    <ScrollView
+            android:id="@+id/thirdLine"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@id/home_bottom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/secondLineScrollView">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/imgBtnBanner1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorSecondary"
+                    android:contentDescription="@string/ad_banner"
+                    android:layout_marginTop="5sp"
+                    android:layout_marginBottom="5sp"
+                    android:padding="15sp"
+                    android:paddingLeft="40sp"
+                    android:paddingRight="40sp"
+                    android:scaleType="fitStart"
+                    android:tag="@string/mk_group"
+                    app:srcCompat="@drawable/mk_group_logo" />
+
+                <ImageButton
+                    android:id="@+id/imgBtnBanner2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorSecondary"
+                    android:contentDescription="@string/ad_banner"
+                    android:layout_marginTop="5sp"
+                    android:layout_marginBottom="5sp"
+                    android:padding="15sp"
+                    android:paddingLeft="40sp"
+                    android:paddingRight="40sp"
+                    android:scaleType="fitStart"
+                    android:tag="@string/delta_agrar"
+                    app:srcCompat="@drawable/delta_agrar_logo" />
+
+                <ImageButton
+                    android:id="@+id/imgBtnBanner3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5sp"
+                    android:layout_marginBottom="5sp"
+                    android:background="@color/colorSecondary"
+                    android:contentDescription="@string/ad_banner"
+                    android:padding="15sp"
+                    android:paddingLeft="40sp"
+                    android:paddingRight="40sp"
+                    android:scaleType="fitStart"
+                    android:tag="@string/bayer"
+                    app:srcCompat="@drawable/bayer_logo" />
+
+                <ImageButton
+                    android:id="@+id/imgBtnBanner4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorSecondary"
+                    android:contentDescription="@string/ad_banner"
+                    android:layout_marginTop="5sp"
+                    android:layout_marginBottom="5sp"
+                    android:padding="15sp"
+                    android:paddingLeft="40sp"
+                    android:paddingRight="40sp"
+                    android:scaleType="fitStart"
+                    android:tag="@string/kite"
+                    app:srcCompat="@drawable/kite_logo" />
+
+                <ImageButton
+                    android:id="@+id/imgBtnBanner5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorSecondary"
+                    android:contentDescription="@string/ad_banner"
+                    android:layout_marginTop="5sp"
+                    android:layout_marginBottom="5sp"
+                    android:padding="15sp"
+                    android:paddingLeft="40sp"
+                    android:paddingRight="40sp"
+                    android:scaleType="fitStart"
+                    android:tag="pioneer"
+                    app:srcCompat="@drawable/pioneer_logo" />
+
+                <ImageButton
+                    android:id="@+id/imgBtnBanner6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorSecondary"
+                    android:contentDescription="@string/ad_banner"
+                    android:layout_marginTop="5sp"
+                    android:layout_marginBottom="5sp"
+                    android:padding="15sp"
+                    android:paddingLeft="40sp"
+                    android:paddingRight="40sp"
+                    android:scaleType="fitStart"
+                    android:tag="syngenta"
+                    app:srcCompat="@drawable/syngenta_logo" />
+
+                <ImageButton
+                    android:id="@+id/imgBtnBanner7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorSecondary"
+                    android:contentDescription="@string/ad_banner"
+                    android:layout_marginTop="5sp"
+                    android:layout_marginBottom="5sp"
+                    android:padding="15sp"
+                    android:paddingLeft="40sp"
+                    android:paddingRight="40sp"
+                    android:scaleType="fitStart"
+                    android:tag="delta_agrar"
+                    app:srcCompat="@drawable/delta_agrar_logo" />
+
+                <ImageButton
+                    android:id="@+id/imgBtnBanner8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorSecondary"
+                    android:contentDescription="@string/ad_banner"
+                    android:layout_marginTop="5sp"
+                    android:layout_marginBottom="5sp"
+                    android:padding="15sp"
+                    android:paddingLeft="40sp"
+                    android:paddingRight="40sp"
+                    android:scaleType="fitStart"
+                    android:tag="bayer"
+                    app:srcCompat="@drawable/bayer_logo" />
+
+                <ImageButton
+                    android:id="@+id/imgBtnBanner9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorSecondary"
+                    android:contentDescription="@string/ad_banner"
+                    android:layout_marginTop="5sp"
+                    android:layout_marginBottom="5sp"
+                    android:padding="15sp"
+                    android:paddingLeft="40sp"
+                    android:paddingRight="40sp"
+                    android:scaleType="fitStart"
+                    android:tag="kite"
+                    app:srcCompat="@drawable/kite_logo" />
+
+                <ImageButton
+                    android:id="@+id/imgBtnBanner10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorSecondary"
+                    android:contentDescription="@string/ad_banner"
+                    android:layout_marginTop="5sp"
+                    android:layout_marginBottom="5sp"
+                    android:padding="15sp"
+                    android:paddingLeft="40sp"
+                    android:paddingRight="40sp"
+                    android:scaleType="fitStart"
+                    android:tag="syngenta"
+                    app:srcCompat="@drawable/syngenta_logo" />
+
+                <ImageButton
+                    android:id="@+id/imgBtnBanner11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorSecondary"
+                    android:contentDescription="@string/ad_banner"
+                    android:layout_marginTop="5sp"
+                    android:layout_marginBottom="5sp"
+                    android:padding="15sp"
+                    android:paddingLeft="40sp"
+                    android:paddingRight="40sp"
+                    android:scaleType="fitStart"
+                    android:tag="pioneer"
+                    app:srcCompat="@drawable/pioneer_logo" />
+
+                <ImageButton
+                    android:id="@+id/imgBtnBanner12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorSecondary"
+                    android:contentDescription="@string/ad_banner"
+                    android:layout_marginTop="5sp"
+                    android:layout_marginBottom="5sp"
+                    android:padding="15sp"
+                    android:paddingLeft="40sp"
+                    android:paddingRight="40sp"
+                    android:scaleType="fitStart"
+                    android:tag="@string/mk_group"
+                    app:srcCompat="@drawable/mk_group_logo" />
+
+            </LinearLayout>
+        </ScrollView>
+
+    <android.support.constraint.ConstraintLayout
+            android:id="@+id/home_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            app:layout_constraintBottom_toBottomOf="@+id/home_fragment"
+            ></android.support.constraint.ConstraintLayout>
+
+
+
+</android.support.constraint.ConstraintLayout>

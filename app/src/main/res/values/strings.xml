@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Mobilni Farmer</string>
+    <string name="ad_banner">Advertisement</string>
+    <string name="main_home">Home</string>
+    <string name="main_book">Book</string>
+    <string name="main_shop">Shop</string>
+    <string name="main_machine">Machines</string>
+    <string name="main_calculator">Calculator</string>
+    <string name="main_weather">Weather</string>
+    <string name="main_cultures">Cultures</string>
+
+
+
+    <string name="culture_wheat">Pšenica</string>
+    <string name="culture_barley">Ječam</string>
+    <string name="culture_soy">Soja</string>
+    <string name="culture_corn">Kukuruz</string>
+    <string name="culture_sunflower">Suncokret</string>
+    <string name="geo_link">Vašu parcelu možete označiti <a href="https://a3.geosrbija.rs/">ovde.</a></string>
+
+    <string name="delta_agrar_link">https://www.deltaagrar.rs/home.html</string>
+    <string name="delta_agrar">delta agrar</string>
+
+    <string name="bayer_link">https://www.bayer.com/</string>
+    <string name="bayer">bayer</string>
+
+    <string name="mk_group_link">https://www.mkgroup.rs/</string>
+    <string name="mk_group">mk group</string>
+
+    <string name="kite_link">https://www.kitedoo.rs/</string>
+    <string name="kite">kite</string>
+
+    <string name="pioneer_link">https://www.pioneer.com/landing</string>
+    <string name="pioneer">pioneer</string>
+
+    <string name="syngenta_link">https://www.syngenta.rs/</string>
+    <string name="syngenta">syngenta</string>
+
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+</resources>
