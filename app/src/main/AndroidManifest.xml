@@ -14,14 +14,15 @@
         android:roundIcon="@drawable/ic_tractor"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.nikola.mobilniFarmer.MainActivity">
+        <activity android:name=".CultureViewActivity"></activity>
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.nikola.mobilniFarmer.CultureEditActivity"></activity>
+        <activity android:name=".CultureEditActivity" />
     </application>
 
 </manifest>

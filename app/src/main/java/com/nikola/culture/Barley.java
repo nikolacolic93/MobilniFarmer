@@ -13,6 +13,7 @@ public class Barley extends Culture {
     }
 
     private Barley(){
+        super();
         this.culture = CultureType.BARLEY;
         this.landArea = "";
     }

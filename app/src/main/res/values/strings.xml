@@ -10,7 +10,6 @@
     <string name="main_cultures">Cultures</string>
 
 
-
     <string name="culture_wheat">Pšenica</string>
     <string name="culture_barley">Ječam</string>
     <string name="culture_soy">Soja</string>
@@ -38,5 +37,12 @@
 
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eros risus,
+        tincidunt in rutrum non, pretium semper lacus. In sit amet neque diam. Cras interdum vehicula odio vitae molestie.
+        Curabitur hendrerit tristique ante, nec auctor nisi viverra at. Morbi eu purus non lacus lobortis maximus.
+        Donec id leo nec purus hendrerit tincidunt at eget erat. Phasellus eu metus massa.
+        Vestibulum eget nibh eget quam efficitur interdum non nec neque. Aliquam dapibus ultricies ex ut blandit.
+        Sed cursus lacus quis mattis iaculis. </string>
 
 </resources>

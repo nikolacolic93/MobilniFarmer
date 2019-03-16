@@ -13,6 +13,7 @@ public class Corn extends Culture {
     }
 
     private Corn(){
+        super();
         this.culture = CultureType.CORN;
         this.landArea = "";
     }

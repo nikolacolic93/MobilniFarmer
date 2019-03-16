@@ -13,6 +13,7 @@ public class Sunflower extends Culture {
     }
 
     private Sunflower(){
+        super();
         this.culture = CultureType.SUNFLOWER;
         this.landArea = "";
     }

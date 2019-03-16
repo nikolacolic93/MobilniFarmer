@@ -13,6 +13,7 @@ public class Soy extends Culture {
     }
 
     private Soy(){
+        super();
         this.culture = CultureType.SOY;
         this.landArea = "";
     }

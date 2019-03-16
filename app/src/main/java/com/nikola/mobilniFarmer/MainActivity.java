@@ -155,16 +155,18 @@ public class MainActivity extends AppCompatActivity implements LocationListener,
 
     @Override
     public void buttonPressed(ImageButton imgBtn) {
-        String name = (String) imgBtn.getTag();
+        Intent cultureEditIntent = new Intent(this, CultureEditActivity.class);
+
         int id = imgBtn.getId();
+        String name = (String) imgBtn.getTag();
 
-        Intent i = new Intent(this, CultureEditActivity.class);
-        i.putExtra("cultureName", imgBtn.getContentDescription());
-        i.putExtra("cultureImg", getResources().getIdentifier(name, "drawable", getPackageName()));
-        i.putExtra("id", id);
+        cultureEditIntent.putExtra("cultureName", imgBtn.getContentDescription());
+        cultureEditIntent.putExtra("cultureImg", getResources().getIdentifier(name, "drawable", getPackageName()));
+        cultureEditIntent.putExtra("id", id);
 
 
-        startActivity(i);
+        startActivity(cultureEditIntent);
 
     }
+
 }

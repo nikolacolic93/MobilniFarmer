@@ -5,11 +5,17 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import com.nikola.culture.Culture;
+
+import java.util.HashMap;
+import java.util.HashSet;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
 
@@ -18,6 +24,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     static String landAreaCorn;
     static String landAreaSoy;
     static String landAreaSunflower;
+    static HashSet<Culture> cultures = new HashSet<>(0);
+    static HashMap<String, Integer> cultureInfo = new HashMap<>(0);
 
     private OnFragmentInteractionListener mListener;
 
@@ -32,6 +40,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         Bundle bundle = getActivity().getIntent().getExtras();
 
         if(bundle!=null){
+
             switch (bundle.getInt("id")){
                 case R.id.imgBtnWheat:{
                     landAreaWheat = bundle.getString("landArea");
@@ -54,6 +63,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     break;
                 }
             }
+        cultureInfo = (HashMap<String,Integer>)bundle.get("cultureInfo");
+        cultures=(HashSet<Culture>) bundle.get("cultureSet");
+
         }
     }
 
@@ -79,27 +91,31 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
 
         /*ImageButton btnWeather = (ImageButton) v.findViewById(R.id.imgBtnWeather);
-        btnWeather.setOnClickListener(this);
-        ImageButton btnCulture = (ImageButton) v.findViewById(R.id.imgBtnCulture);
-        btnCulture.setOnClickListener(this);*/
+        btnWeather.setOnClickListener(this);*/
 
+        ((ImageButton) v.findViewById(R.id.imgBtnCulture)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), CultureViewActivity.class);
+                i.putExtra("cultureSet",cultures);
+                i.putExtra("cultureInfo", cultureInfo);
+                startActivity(i);
+            }
+        });
 
-        v.findViewById(R.id.imgBtnBanner1).setOnClickListener(banners);
-        v.findViewById(R.id.imgBtnBanner2).setOnClickListener(banners);
-        v.findViewById(R.id.imgBtnBanner3).setOnClickListener(banners);
-        v.findViewById(R.id.imgBtnBanner4).setOnClickListener(banners);
-        v.findViewById(R.id.imgBtnBanner5).setOnClickListener(banners);
-        v.findViewById(R.id.imgBtnBanner6).setOnClickListener(banners);
-        v.findViewById(R.id.imgBtnBanner7).setOnClickListener(banners);
-        v.findViewById(R.id.imgBtnBanner8).setOnClickListener(banners);
-        v.findViewById(R.id.imgBtnBanner9).setOnClickListener(banners);
-        v.findViewById(R.id.imgBtnBanner10).setOnClickListener(banners);
-        v.findViewById(R.id.imgBtnBanner11).setOnClickListener(banners);
-        v.findViewById(R.id.imgBtnBanner12).setOnClickListener(banners);
+        // Adding listeners for each Advertisement banner
 
+        ImageButton[] buttons = new ImageButton[13];
+        for(int i=1; i<buttons.length; i++) {
+            String buttonID = "imgBtnBanner" + i;
+            int resID = getResources().getIdentifier(buttonID, "id", getActivity().getPackageName());
+            buttons[i] = ((ImageButton) v.findViewById(resID));
+            buttons[i].setOnClickListener(banners);
+        }
 
         return v;
     }
+
 
     View.OnClickListener banners = new View.OnClickListener() {
         @Override

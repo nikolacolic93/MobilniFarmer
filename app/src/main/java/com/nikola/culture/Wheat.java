@@ -1,5 +1,6 @@
 package com.nikola.culture;
 
+
 public class Wheat extends Culture{
     final private CultureType culture;
 
