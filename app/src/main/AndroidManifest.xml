@@ -14,7 +14,8 @@
         android:roundIcon="@drawable/ic_tractor"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CultureViewActivity"></activity>
+        <activity android:name=".ForecastActivity"></activity>
+        <activity android:name=".CultureViewActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

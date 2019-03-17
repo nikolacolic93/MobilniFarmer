@@ -2,10 +2,10 @@ package com.nikola.mobilniFarmer;
 
 import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -90,8 +90,16 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         ((ImageButton)v.findViewById(R.id.imgBtnSunflower)).setOnClickListener(this);
 
 
-        /*ImageButton btnWeather = (ImageButton) v.findViewById(R.id.imgBtnWeather);
-        btnWeather.setOnClickListener(this);*/
+        ImageButton btnWeather = (ImageButton) v.findViewById(R.id.imgBtnWeather);
+        btnWeather.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), ForecastActivity.class);
+                i.putExtra("latitude", getArguments().getDouble("latitude"));
+                i.putExtra("longitude", getArguments().getDouble("longitude"));
+                startActivity(i);
+            }
+        });
 
         ((ImageButton) v.findViewById(R.id.imgBtnCulture)).setOnClickListener(new View.OnClickListener() {
             @Override

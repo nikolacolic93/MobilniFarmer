@@ -13,10 +13,6 @@ public class WeatherModel {
     public WeatherModel() {
     }
 
-    public WeatherModel(String temp) {
-        this.temp = temp;
-    }
-
     public String getTemp() {
         return temp;
     }

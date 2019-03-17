@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener,
 
     private TextView temperature;
     Location location;
+    private double lat;
+    private double lng;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -41,7 +43,11 @@ public class MainActivity extends AppCompatActivity implements LocationListener,
 
             switch (item.getItemId()) {
                 case R.id.nav_home:
+                    Bundle locationBundle = new Bundle();
+                    locationBundle.putDouble("latitude", lat);
+                    locationBundle.putDouble("longitude", lng);
                     selectedFragment = new HomeFragment();
+                    selectedFragment.setArguments(locationBundle);
                     getWeather(location);
                     break;
                 case R.id.nav_book:
@@ -73,11 +79,14 @@ public class MainActivity extends AppCompatActivity implements LocationListener,
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
-
         getLocation();
 
-
+        HomeFragment home = new HomeFragment();
+        Bundle locationBundle = new Bundle();
+        locationBundle.putDouble("latitude", lat);
+        locationBundle.putDouble("longitude", lng);
+        home.setArguments(locationBundle);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, home).commit();
     }
 
 
@@ -106,7 +115,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener,
             locationManager.requestLocationUpdates(locationManager.GPS_PROVIDER, 500, 10, this);
             location = locationManager.getLastKnownLocation(locationManager.GPS_PROVIDER);
             getWeather(location);
-
+            lat=location.getLatitude();
+            lng = location.getLongitude();
         }
 
     }
@@ -118,10 +128,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener,
     }
 
     public void getWeather(Location location) {
-        double lat = location.getLatitude();
-        double lon = location.getLongitude();
-        String url = "http://api.openweathermap.org/data/2.5/weather?lat=" + String.valueOf(lat)
-                + "&lon=" + String.valueOf(lon) + "&units=metric&appid=0c90c6c98f912f14896425d39d3ba458";
+        String url = "http://api.openweathermap.org/data/2.5/weather?lat=" + String.valueOf(location.getLatitude())
+                + "&lon=" + String.valueOf(location.getLongitude()) + "&units=metric&appid=0c90c6c98f912f14896425d39d3ba458";
 
         WeatherApi.getJSON(url, new ReadDataHandler() {
                     @Override
@@ -163,7 +171,6 @@ public class MainActivity extends AppCompatActivity implements LocationListener,
         cultureEditIntent.putExtra("cultureName", imgBtn.getContentDescription());
         cultureEditIntent.putExtra("cultureImg", getResources().getIdentifier(name, "drawable", getPackageName()));
         cultureEditIntent.putExtra("id", id);
-
 
         startActivity(cultureEditIntent);
 

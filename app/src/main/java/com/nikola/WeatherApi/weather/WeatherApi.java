@@ -9,8 +9,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class WeatherApi {
-    public static void getJSON(String url, final ReadDataHandler rdh) {
+        public static void getJSON(String url, final ReadDataHandler rdh) {
         AsyncTask<String, Void, String> task = new AsyncTask<String, Void, String>() {
+
             String result = "";
 
             @Override
@@ -34,7 +35,7 @@ public class WeatherApi {
             @Override
             protected void onPostExecute(String s) {
                 rdh.setJson(result);
-                rdh.sendEmptyMessage(0);
+                rdh.sendEmptyMessage(1);
             }
         };
         task.execute(url);

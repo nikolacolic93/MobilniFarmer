@@ -1,6 +1,7 @@
 package com.nikola.mobilniFarmer;
 
 import android.animation.LayoutTransition;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -46,6 +47,7 @@ public class CultureViewActivity extends AppCompatActivity {
                 images = new ArrayList<>(cultureInfo.values());
             }
         }
+
 
         listView = (ListView) findViewById(R.id.listView);
 
