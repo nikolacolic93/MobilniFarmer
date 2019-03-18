@@ -1,7 +1,5 @@
 package com.nikola.mobilniFarmer;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -16,12 +14,14 @@ import android.widget.TextView;
 import com.nikola.WeatherApi.weather.ForecastModel;
 import com.nikola.WeatherApi.weather.ReadDataHandler;
 import com.nikola.WeatherApi.weather.WeatherApi;
-import com.nikola.WeatherApi.weather.WeatherModel;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
 
-import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ForecastActivity extends AppCompatActivity {
 
@@ -89,23 +89,29 @@ public class ForecastActivity extends AppCompatActivity {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            View v = getLayoutInflater().inflate(R.layout.forecast_view_element,null);
+            View v = getLayoutInflater().inflate(R.layout.forecast_view_element, null);
 
-            ImageView icon = (ImageView)v.findViewById(R.id.forecastElementImg);
-            TextView temp = (TextView)v.findViewById(R.id.listElementTemp);
+            ImageView icon = (ImageView) v.findViewById(R.id.forecastElementImg);
+            TextView temp = (TextView) v.findViewById(R.id.forecastElementTemp);
+            TextView date = (TextView) v.findViewById(R.id.forecastElementDate);
+            TextView desc = (TextView) v.findViewById(R.id.forecastElementDescription);
 
             String imgUrlRoot = "http://openweathermap.org/img/w/";
             String imgUrlSufix = forecastList.get(position).getIcon() + ".png";
 
+            Picasso.get().load(imgUrlRoot + imgUrlSufix).into(icon);
+            temp.setText(String.format("%.0f", Double.valueOf(forecastList.get(position).getTemp())) + " \u2103");
+
+            desc.setText(forecastList.get(position).getDesc());
+
             try {
-                URL url = new URL(imgUrlRoot + imgUrlSufix);
- //               Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
- //               icon.setImageBitmap(bmp);
-                temp.setText(String.format("%.0f", Double.valueOf(forecastList.get(position).getTemp())) + " \u2103");
+                Date simpleDate = new SimpleDateFormat("yyyy-MM-dd").parse(forecastList.get(position).getDate());
+                String dan = new SimpleDateFormat("EEEE").format(simpleDate);
+                date.setText(dan);
+            } catch (ParseException e) {
+                e.printStackTrace();
             }
-            catch (Exception e){
-                Log.e("Exception", e.getMessage());
-            }
+
             return v;
         }
     }

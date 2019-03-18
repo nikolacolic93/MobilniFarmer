@@ -9,7 +9,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class WeatherApi {
-        public static void getJSON(String url, final ReadDataHandler rdh) {
+    public static void getJSON(String url, final ReadDataHandler rdh) {
         AsyncTask<String, Void, String> task = new AsyncTask<String, Void, String>() {
 
             String result = "";

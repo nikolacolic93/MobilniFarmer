@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener,
             locationManager.requestLocationUpdates(locationManager.GPS_PROVIDER, 500, 10, this);
             location = locationManager.getLastKnownLocation(locationManager.GPS_PROVIDER);
             getWeather(location);
-            lat=location.getLatitude();
+            lat = location.getLatitude();
             lng = location.getLongitude();
         }
 

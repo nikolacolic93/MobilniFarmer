@@ -2,10 +2,7 @@ package com.nikola.WeatherApi.weather;
 
 import android.util.Log;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
-
-import java.util.LinkedList;
 
 public class WeatherModel {
     private String temp;
@@ -31,19 +28,5 @@ public class WeatherModel {
             Log.e("Exception", e.getMessage());
         }
         return weather;
-    }
-
-    public static LinkedList<WeatherModel> parseJSONArray(JSONArray array){
-        LinkedList<WeatherModel> list = new LinkedList<>();
-
-        try{
-            for(int i=0; i < array.length();i++){
-                WeatherModel weather = parseJSONObject(array.getJSONObject(i));
-                list.add(weather);
-            }
-        } catch (Exception e){
-            Log.e("Exception", e.getMessage());
-        }
-        return list;
     }
 }
