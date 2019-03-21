@@ -28,7 +28,6 @@ public class CultureViewActivity extends AppCompatActivity {
     static HashSet<Culture> cultures = new HashSet<>(0);
     static HashMap<String, Integer> cultureInfo;
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

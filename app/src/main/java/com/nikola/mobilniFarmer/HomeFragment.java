@@ -2,7 +2,6 @@ package com.nikola.mobilniFarmer;
 
 import android.content.Context;
 import android.content.Intent;
-import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -27,7 +26,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     static HashSet<Culture> cultures = new HashSet<>(0);
     static HashMap<String, Integer> cultureInfo = new HashMap<>(0);
 
-    private OnFragmentInteractionListener mListener;
+    private HomeFragmentListener homeListener;
+    private OnCultureEditListener mListener;
 
     public HomeFragment() {
     }
@@ -35,8 +35,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-        }
+
         Bundle bundle = getActivity().getIntent().getExtras();
 
         if(bundle!=null){
@@ -65,7 +64,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             }
         cultureInfo = (HashMap<String,Integer>)bundle.get("cultureInfo");
         cultures=(HashSet<Culture>) bundle.get("cultureSet");
-
+        homeListener.culturesInfoSent(cultureInfo);
         }
     }
 
@@ -186,11 +185,15 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
+        if (context instanceof OnCultureEditListener) {
+            mListener = (OnCultureEditListener) context;
+        }
+        if(context instanceof HomeFragmentListener) {
+            homeListener = (HomeFragmentListener) context;
+        }
+        else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+                    + " must implement OnCultureEditListener");
         }
     }
 
@@ -198,9 +201,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+        homeListener = null;
     }
 
-    public interface OnFragmentInteractionListener {
+    public interface OnCultureEditListener {
         void buttonPressed(ImageButton imgBtn);
+    }
+
+    public interface HomeFragmentListener{
+        void culturesInfoSent(HashMap<String, Integer> cultureInfo);
     }
 }

@@ -26,13 +26,18 @@ import com.nikola.WeatherApi.weather.WeatherModel;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 
-public class MainActivity extends AppCompatActivity implements LocationListener, HomeFragment.OnFragmentInteractionListener {
+
+public class MainActivity extends AppCompatActivity implements LocationListener, HomeFragment.OnCultureEditListener, HomeFragment.HomeFragmentListener, BookFragment.OnBookRecordListener {
 
     private TextView temperature;
     Location location;
     private double lat;
     private double lng;
+    private HomeFragment homeFragment;
+    private BookFragment bookFragment;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -51,7 +56,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener,
                     getWeather(location);
                     break;
                 case R.id.nav_book:
-                    selectedFragment = new BookFragment();
+                    if (bookFragment != null) { selectedFragment = bookFragment; }
+                    else                      { selectedFragment = new BookFragment(); }
                     break;
                 case R.id.nav_shop:
                     selectedFragment = new ShopFragment();
@@ -81,12 +87,12 @@ public class MainActivity extends AppCompatActivity implements LocationListener,
 
         getLocation();
 
-        HomeFragment home = new HomeFragment();
+        homeFragment = new HomeFragment();
         Bundle locationBundle = new Bundle();
         locationBundle.putDouble("latitude", lat);
         locationBundle.putDouble("longitude", lng);
-        home.setArguments(locationBundle);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, home).commit();
+        homeFragment.setArguments(locationBundle);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, homeFragment).commit();
     }
 
 
@@ -176,4 +182,24 @@ public class MainActivity extends AppCompatActivity implements LocationListener,
 
     }
 
+    @Override
+    public void culturesInfoSent(HashMap<String, Integer> cultureInfo) {
+        ArrayList<String> names;
+        ArrayList<Integer> images;
+        bookFragment = new BookFragment();
+        names = new ArrayList<>(cultureInfo.keySet());
+        images = new ArrayList<>(cultureInfo.values());
+        Bundle bundle = new Bundle();
+        bundle.putStringArrayList("names", names);
+        bundle.putIntegerArrayList("images", images);
+        bookFragment.setArguments(bundle);
+    }
+
+    @Override
+    public void recordCulture(String culture) {
+        Intent bookRecordIntent = new Intent(this, BookRecordActivity.class);
+        bookRecordIntent.putExtra("culture", culture);
+        startActivity(bookRecordIntent);
+    }
 }
+
